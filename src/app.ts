@@ -17,7 +17,7 @@ app.use('/health', healthRouter);
 app.use('/api/players', playerRouter);
 app.use('/api/heroes', heroRouter);
 app.use('/api/skins', skinRouter);
-app.use('/statistics', statisticsRouter);
+app.use('/api/statistics', statisticsRouter);
 
 app.use(notFound);
 app.use(errorHandler);
