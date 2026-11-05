@@ -6,6 +6,7 @@ import skinRouter from './routes/skin.route.js';
 import logger from './middleware/logger.js';
 import notFound from './middleware/not-found.js';
 import errorHandler from './middleware/error-handler.js';
+import statisticsRouter from './routes/statistics.routes.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/health', healthRouter);
 app.use('/api/players', playerRouter);
 app.use('/api/heroes', heroRouter);
 app.use('/api/skins', skinRouter);
+app.use('/statistics', statisticsRouter);
 
 app.use(notFound);
 app.use(errorHandler);

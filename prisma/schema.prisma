@@ -38,6 +38,11 @@ enum Currency {
   DIAMOND
 }
 
+enum MatchResult {
+  WIN
+  LOSE
+}
+
 model Hero {
   id           Int     @id @default(autoincrement())
   name         String  @unique
@@ -69,6 +74,7 @@ model Player {
   createdAt DateTime @default(now())
 
   heroes PlayerHero[]
+  matches Match[]
 }
 
 model PlayerHero {
@@ -82,4 +88,14 @@ model PlayerHero {
   hero   Hero   @relation(fields: [heroId], references: [id])
 
   @@unique([playerId, heroId])
+}
+
+model Match {
+  id        Int         @id @default(autoincrement())
+  playerId  Int
+  result    MatchResult
+  bpEarned  Int
+  createdAt DateTime    @default(now())
+
+  player Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
 }
